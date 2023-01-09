@@ -1,0 +1,1 @@
+insert into comment(ID,PHARMACYNAME, PERSONNAME, PERSONLASTNAME,DESCRIPTION)  values( 1,'Stern-Apotheke','muco','ozalp','Hizmet çok kötü');
