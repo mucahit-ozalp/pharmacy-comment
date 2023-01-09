@@ -1,4 +1,4 @@
-package com.app.pharmacy.model;
+package com.app.pharmacy.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;

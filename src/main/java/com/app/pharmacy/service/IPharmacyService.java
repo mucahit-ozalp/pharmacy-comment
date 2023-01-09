@@ -1,7 +1,6 @@
 package com.app.pharmacy.service;
 
-import com.app.pharmacy.model.Pharmacy;
-import com.app.pharmacy.model.Result;
+import com.app.pharmacy.entity.Pharmacy;
 import java.io.IOException;
 
 public interface IPharmacyService {

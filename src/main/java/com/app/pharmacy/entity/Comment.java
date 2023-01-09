@@ -1,4 +1,4 @@
-package com.app.pharmacy.model;
+package com.app.pharmacy.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

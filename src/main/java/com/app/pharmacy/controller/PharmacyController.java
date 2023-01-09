@@ -1,7 +1,6 @@
 package com.app.pharmacy.controller;
 
-import com.app.pharmacy.model.Pharmacy;
-import com.app.pharmacy.model.Result;
+import com.app.pharmacy.entity.Pharmacy;
 import com.app.pharmacy.service.IPharmacyService;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;

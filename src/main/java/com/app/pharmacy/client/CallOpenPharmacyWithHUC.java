@@ -1,6 +1,6 @@
 package com.app.pharmacy.client;
 
-import com.app.pharmacy.model.Pharmacy;
+import com.app.pharmacy.entity.Pharmacy;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.BufferedReader;
 import java.io.IOException;
