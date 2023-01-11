@@ -25,4 +25,6 @@ public class Comment {
   private String personLastName;
   @Column(name="DESCRIPTION")
   private String description;
+  @Column(name = "ISACTIVE")
+  private Boolean isActive;
 }
