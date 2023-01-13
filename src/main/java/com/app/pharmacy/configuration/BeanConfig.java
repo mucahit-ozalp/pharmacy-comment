@@ -11,9 +11,5 @@ public class BeanConfig {
   public ObjectMapper objectMapper() {
     return new ObjectMapper();
   }
-  @Bean
-  public OkHttpClient okHttpClient(){
-    return new OkHttpClient();
-  }
 
 }

@@ -21,7 +21,7 @@ public class PharmacyService implements IPharmacyService {
 
   @Autowired
   public PharmacyService(
-      @Qualifier("callOpenPharmacyWithOkHttp") IPharmacyClient iPharmacyClient,
+      @Qualifier("callOpenPharmacyWithHUC") IPharmacyClient iPharmacyClient,
       ICommentRepository iCommentRepository) {
     this.iPharmacyClient = iPharmacyClient;
     this.iCommentRepository = iCommentRepository;

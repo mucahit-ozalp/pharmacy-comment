@@ -27,7 +27,8 @@ public class CallOpenPharmacyWithHUC implements IPharmacyClient {
 
   @Override
   public Pharmacy getOpenPharmacy(String city) throws IOException {
-    StringBuilder urlBuilder = new StringBuilder("https://api.collectapi.com/germanyPharmacy/dutyPharmacy?city=");
+    StringBuilder urlBuilder = new StringBuilder(
+        "https://api.collectapi.com/germanyPharmacy/dutyPharmacy?city=");
     urlBuilder.append(city);
     URL url = new URL(urlBuilder.toString());
     HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -49,9 +50,9 @@ public class CallOpenPharmacyWithHUC implements IPharmacyClient {
       content.append(inputLine);
     }
     in.close();
+    logger.info(content.toString());
 
     Pharmacy pharmacy = objectMapper.readValue(content.toString(), Pharmacy.class);
-    logger.info(pharmacy.toString());
     return pharmacy;
   }
 }

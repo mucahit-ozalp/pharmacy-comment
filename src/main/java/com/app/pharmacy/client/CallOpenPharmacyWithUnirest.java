@@ -36,8 +36,8 @@ public class CallOpenPharmacyWithUnirest implements IPharmacyClient {
       if (response.getStatus() != 200) {
         throw new Exception("Failed to get old release info: " + response.getStatusText());
       }
+      logger.info(response.getBody());
       Pharmacy pharmacy = objectMapper.readValue(response.getBody(), Pharmacy.class);
-      logger.info(pharmacy.toString());
       return pharmacy;
     } catch (UnirestException e) {
       throw new RuntimeException(e);
