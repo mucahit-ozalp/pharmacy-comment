@@ -29,10 +29,12 @@ public class PharmacyFilter implements Filter {
       final FilterChain chain) throws IOException, ServletException {
     HttpServletRequest req = (HttpServletRequest) request;
     HttpServletResponse res = (HttpServletResponse) response;
+    logger.info("***** doFilter open *****");
     logger.info("Logging Request  {} : {}", req.getMethod(), req.getRequestURI());
-    logger.info("Hello from: " + request.getLocalAddr());
+    logger.info("Call from IP: " + request.getLocalAddr());
     chain.doFilter(request, response);
     logger.info("Logging Response :{}", res.getContentType());
+    logger.info("***** doFilter close *****");
 
   }
 
