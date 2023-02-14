@@ -1,16 +1,14 @@
 package com.app.pharmacy.service;
 
 import com.app.pharmacy.client.IPharmacyClient;
-import com.app.pharmacy.exception.InvalidCityException;
-import com.app.pharmacy.repository.ICommentRepository;
 import com.app.pharmacy.entity.Comment;
 import com.app.pharmacy.entity.Pharmacy;
 import com.app.pharmacy.entity.Result;
+import com.app.pharmacy.exception.InvalidCityException;
+import com.app.pharmacy.repository.ICommentRepository;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Sort;
@@ -22,6 +20,7 @@ public class PharmacyService implements IPharmacyService {
   private IPharmacyClient iPharmacyClient;
   private ICommentRepository iCommentRepository;
 
+  //TODO will be add to db
   private final List<String> cityList= Arrays.asList("hamburg");
   @Autowired
   public PharmacyService(

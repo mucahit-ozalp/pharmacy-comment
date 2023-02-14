@@ -26,6 +26,7 @@ public interface ICommentRepository extends JpaRepository<Comment, Long> {
   List<Comment> findByIdLessThan(Long age);
   List<Comment> findByPersonNameStartingWithOrderByPersonName(String name);
   Optional<Comment> findById(Long value);
+  Comment  findByPersonName(String name);
 
   @Modifying
   @Transactional

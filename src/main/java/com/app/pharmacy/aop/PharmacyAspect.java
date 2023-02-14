@@ -46,6 +46,9 @@ public class PharmacyAspect {
     Arrays.stream(signature.getExceptionTypes())
         .forEach(aClass -> logger.info("exception type: " + aClass));
 
+    //TODO will write proceed method
+//    Object returnedByMethod = joinPoint.proceed();
+
     logger.info("***** AOP close *****");
 
   }

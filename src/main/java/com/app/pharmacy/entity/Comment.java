@@ -23,6 +23,8 @@ public class Comment {
   private String personName;
   @Column(name="PERSONLASTNAME")
   private String personLastName;
+  @Column(name="PASSWORD")
+  private String password;
   @Column(name="DESCRIPTION")
   private String description;
   @Column(name = "ISACTIVE")
