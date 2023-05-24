@@ -21,7 +21,8 @@ public class PharmacyService implements IPharmacyService {
   private ICommentRepository iCommentRepository;
 
   //TODO will be add to db
-  private final List<String> cityList= Arrays.asList("hamburg");
+  private final List<String> cityList = Arrays.asList("hamburg");
+
   @Autowired
   public PharmacyService(
       @Qualifier("callOpenPharmacyWithHUC") IPharmacyClient iPharmacyClient,
@@ -34,9 +35,9 @@ public class PharmacyService implements IPharmacyService {
   @Override
   public Pharmacy getOpenPharmacy(String city) throws IOException, InvalidCityException {
 
-      if(!cityList.contains(city)){
-        throw new InvalidCityException("City name invalid");
-      }
+    if (!cityList.contains(city)) {
+      throw new InvalidCityException("City name invalid");
+    }
 
     Pharmacy pharmacy = iPharmacyClient.getOpenPharmacy(city);
     List<Comment> comment = iCommentRepository.findByIsActiveTrue(Sort.by("personName"));
@@ -47,6 +48,9 @@ public class PharmacyService implements IPharmacyService {
         }
       }
     }
+//    pharmacy.getResult().stream()
+//        .forEach(result -> result.setComment(
+//            (Comment) comment.stream().filter(obj -> obj.getPharmacyName().equals(result.getName()))));
 
     return pharmacy;
   }
