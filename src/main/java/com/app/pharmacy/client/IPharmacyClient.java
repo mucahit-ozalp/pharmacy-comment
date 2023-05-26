@@ -6,4 +6,5 @@ import java.io.IOException;
 public interface IPharmacyClient {
   Pharmacy getOpenPharmacy(String city) throws IOException;
 
+
 }

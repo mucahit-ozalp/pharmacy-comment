@@ -1,6 +1,6 @@
 package com.app.pharmacy.client;
 
-import com.app.pharmacy.entity.Pharmacy;
+import com.app.pharmacy.entity.CitiesModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import okhttp3.Call;
@@ -14,25 +14,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CallOpenPharmacyWithOkHttp implements IPharmacyClient {
+public class CallCitiesOfGermayWithOkHttp implements ICallCitiesOfGermany {
 
-  private static String URL = "https://api.collectapi.com/germanyPharmacy/dutyPharmacy";
-  private static final Logger logger = LoggerFactory.getLogger(CallOpenPharmacyWithOkHttp.class);
+  private static String URL = "https://api.collectapi.com/germanyPharmacy/cities";
+  private static final Logger logger = LoggerFactory.getLogger(CallCitiesOfGermayWithOkHttp.class);
 
   private ObjectMapper objectMapper;
 
 
   @Autowired
-  public CallOpenPharmacyWithOkHttp(ObjectMapper objectMapper) {
+  public CallCitiesOfGermayWithOkHttp(ObjectMapper objectMapper) {
     this.objectMapper = objectMapper;
   }
 
   @Override
-  public Pharmacy getOpenPharmacy(String city) throws IOException {
-    OkHttpClient okHttpClient=new OkHttpClient();
-    HttpUrl.Builder urlBuilder
-        = HttpUrl.parse(URL).newBuilder();
-    urlBuilder.addQueryParameter("city", city);
+  public CitiesModel getCitiesOfGermany() throws IOException {
+    OkHttpClient okHttpClient = new OkHttpClient();
+    HttpUrl.Builder urlBuilder = HttpUrl.parse(URL).newBuilder();
 
     String url = urlBuilder.build().toString();
 
@@ -44,7 +42,9 @@ public class CallOpenPharmacyWithOkHttp implements IPharmacyClient {
       throw new IOException("Failed to get old release info: " + response.code());
     }
     logger.info(response.toString());
-    Pharmacy pharmacy = objectMapper.readValue(response.body().string(), Pharmacy.class);
-    return pharmacy;
+    CitiesModel citiesModel = objectMapper.readValue(response.body().string(), CitiesModel.class);
+    return citiesModel;
   }
+
+
 }
