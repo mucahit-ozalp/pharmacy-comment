@@ -28,8 +28,8 @@ public class PharmacyControllerTest {
 
   @Test
   void getOpenPharmacy_when_successful() throws IOException, InvalidCityException {
-    when(pharmacyService.getOpenPharmacy(any())).thenReturn(getDummyPharmacyObj());
-    Pharmacy pharmacy = pharmacyController.getOpenPharmacy(null);
+    when(pharmacyService.getOpenPharmacy(any(),any())).thenReturn(getDummyPharmacyObj());
+    Pharmacy pharmacy = pharmacyController.getOpenPharmacy(null,null);
 
     assertNotNull(pharmacy);
     assertEquals("aaa", pharmacy.getResult().get(0).getName());

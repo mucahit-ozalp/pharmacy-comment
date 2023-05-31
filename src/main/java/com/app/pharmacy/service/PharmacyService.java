@@ -10,6 +10,9 @@ import com.app.pharmacy.exception.InvalidCityException;
 import com.app.pharmacy.repository.ICommentRepository;
 import java.io.IOException;
 import java.util.List;
+import javax.servlet.http.HttpSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Sort;
@@ -18,6 +21,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class PharmacyService implements IPharmacyService {
 
+  private static final Logger logger = LoggerFactory.getLogger(
+      PharmacyService.class);
   private IPharmacyClient iPharmacyClient;
   private ICallCitiesOfGermany iCallCitiesOfGermany;
   private ICommentRepository iCommentRepository;
@@ -33,11 +38,13 @@ public class PharmacyService implements IPharmacyService {
 
 
   @Override
-  public Pharmacy getOpenPharmacy(String city) throws IOException, InvalidCityException {
+  public Pharmacy getOpenPharmacy(HttpSession session,String city) throws IOException, InvalidCityException {
 
     CitiesModel citiesModel =iCallCitiesOfGermany.getCitiesOfGermany();
     boolean containsSearchStr = citiesModel.getResult().getCities().stream().anyMatch(city::equalsIgnoreCase);
+    session.setAttribute("citiesOfGermany",citiesModel.getResult().getCities().toString());
 
+    logger.info((String) session.getAttribute("citiesOfGermany"));
     if (!containsSearchStr) {
       throw new InvalidCityException("City name invalid");
     }

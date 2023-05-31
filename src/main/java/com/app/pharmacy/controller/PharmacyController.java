@@ -1,10 +1,10 @@
 package com.app.pharmacy.controller;
 
-import com.app.pharmacy.client.CallOpenPharmacyWithHUC;
 import com.app.pharmacy.entity.Pharmacy;
 import com.app.pharmacy.exception.InvalidCityException;
 import com.app.pharmacy.service.IPharmacyService;
 import java.io.IOException;
+import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +29,10 @@ public class PharmacyController {
   }
 
   @GetMapping("getopenpharmacy")
-  public Pharmacy getOpenPharmacy(@RequestParam("city") String city)
+  public Pharmacy getOpenPharmacy(HttpSession session,@RequestParam("city") String city)
       throws IOException, InvalidCityException {
     try {
-      return iPharmacyService.getOpenPharmacy(city);
+      return iPharmacyService.getOpenPharmacy(session,city);
     } catch (IOException e) {
       logger.error("process failed");
       throw new IOException("Process failed");
@@ -41,5 +41,6 @@ public class PharmacyController {
       throw new InvalidCityException("City name invalid");
     }
   }
+
 
 }
