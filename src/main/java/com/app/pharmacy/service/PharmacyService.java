@@ -9,7 +9,9 @@ import com.app.pharmacy.entity.Result;
 import com.app.pharmacy.exception.InvalidCityException;
 import com.app.pharmacy.repository.ICommentRepository;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,11 +40,16 @@ public class PharmacyService implements IPharmacyService {
 
 
   @Override
-  public Pharmacy getOpenPharmacy(HttpSession session,String city) throws IOException, InvalidCityException {
+  public Pharmacy getOpenPharmacy(HttpSession session, String city)
+      throws IOException, InvalidCityException {
 
-    CitiesModel citiesModel =iCallCitiesOfGermany.getCitiesOfGermany();
-    boolean containsSearchStr = citiesModel.getResult().getCities().stream().anyMatch(city::equalsIgnoreCase);
-    session.setAttribute("citiesOfGermany",citiesModel.getResult().getCities().toString());
+    CitiesModel citiesModel = (CitiesModel) session.getAttribute("citiesOfGermanyModel");
+    if (citiesModel == null) {
+      citiesModel = iCallCitiesOfGermany.getCitiesOfGermany();
+      session.setAttribute("citiesOfGermanyModel", citiesModel);
+    }
+    boolean containsSearchStr = citiesModel.getResult().getCities().stream()
+        .anyMatch(city::equalsIgnoreCase);
 
     logger.info((String) session.getAttribute("citiesOfGermany"));
     if (!containsSearchStr) {

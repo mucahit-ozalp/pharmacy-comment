@@ -1,7 +1,7 @@
 
 
 
-insert into comment(ID,PHARMACYNAME, PERSONNAME, PERSONLASTNAME,PASSWORD,DESCRIPTION,ISACTIVE)  values( 1,'Schwanen-Apotheke','muco','ozalp','xxx','dummy1',true);
+insert into comment(ID,PHARMACYNAME, PERSONNAME, PERSONLASTNAME,PASSWORD,DESCRIPTION,ISACTIVE)  values( 1,'Pasteur-Apotheke','muco','ozalp','xxx','dummy1',true);
 insert into comment(ID,PHARMACYNAME, PERSONNAME, PERSONLASTNAME,PASSWORD,DESCRIPTION,ISACTIVE)  values( 2,'Stern-Apotheke','azmet','aaa','yyy','dummy2',true);
 insert into comment(ID,PHARMACYNAME, PERSONNAME, PERSONLASTNAME,PASSWORD,DESCRIPTION,ISACTIVE)  values( 3,'Stern-Apotheke','ali','bbbb','zzz','dummy3',true);
 insert into comment(ID,PHARMACYNAME, PERSONNAME, PERSONLASTNAME,PASSWORD,DESCRIPTION,ISACTIVE)  values( 4,'Stern-Apotheke','cem','cccc','qqq',null,true);
