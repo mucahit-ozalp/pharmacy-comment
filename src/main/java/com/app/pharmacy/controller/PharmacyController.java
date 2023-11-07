@@ -27,7 +27,6 @@ public class PharmacyController {
   public PharmacyController(IPharmacyService iPharmacyService) {
     this.iPharmacyService = iPharmacyService;
   }
-
   @GetMapping("getopenpharmacy")
   public Pharmacy getOpenPharmacy(HttpSession session,@RequestParam("city") String city)
       throws IOException, InvalidCityException {
